@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados de Búsqueda</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Opcional: archivo de estilos -->
+</head>
+<body>
+    <h1>Resultados de la búsqueda</h1>
+    <div id="results">Cargando resultados...</div>
+
+    <script>
+        // Función para obtener parámetros de la URL
+        function getQueryParams() {
+            const params = new URLSearchParams(window.location.search);
+            const category = params.get("category");
+            const marca = params.get("marca");
+            return { category, marca };
+        }
+
+        // Función para mostrar los resultados de la búsqueda
+        async function fetchProducts() {
+            const { category, marca } = getQueryParams();
+
+            // Mostrar mensaje si los parámetros están vacíos
+            if (!category || !marca) {
+                document.getElementById("results").innerHTML = 
+                    "No se especificaron parámetros de búsqueda.";
+                return;
+            }
+
+            // Llamada al servidor para buscar productos (AJAX con Fetch API)
+            try {
+                const response = await fetch(
+                    `/buscar_productos.php?category=${encodeURIComponent(category)}&marca=${encodeURIComponent(marca)}`
+                );
+                const productos = await response.json();
+
+                // Mostrar los resultados
+                let output = "";
+                if (productos.length > 0) {
+                    productos.forEach(producto => {
+                        output += `
+                            <div class="product">
+                                <h3>${producto.nombre}</h3>
+                                <p>${producto.descripcion}</p>
+                                <p><strong>Precio:</strong> ${producto.precio}</p>
+                            </div>
+                        `;
+                    });
+                } else {
+                    output = "No se encontraron productos para los criterios seleccionados.";
+                }
+                document.getElementById("results").innerHTML = output;
+            } catch (error) {
+                document.getElementById("results").innerHTML = 
+                    "Hubo un error al cargar los resultados. Intenta nuevamente más tarde.";
+            }
+        }
+
+        // Llamar a la función para cargar productos al cargar la página
+        document.addEventListener("DOMContentLoaded", fetchProducts);
+    </script>
+</body>
+</html>

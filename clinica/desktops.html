@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Clínica del Informático - Desktops</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/stylesdesktops.css"> <!-- Enlace al archivo CSS adicional -->
+  <style>
+    /* Aquí puedes agregar estilos específicos si los necesitas */
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="#">Atención al Cliente: 971 708 349 &gt;&gt; Términos y Condiciones Delibery &gt;&gt; Garantía</a>
+  <span style="float:right;">Correo: laclinicadelinformatico@gmail.com</span>
+</header>
+
+<nav class="navbar">
+  <img src="Imagenes/laclinica.png" alt="La Clínica del Informático"> <!-- Imagen del logo -->
+  
+  <div class="search-bar">
+    <select id="categoryDropdown" class="dropdown">
+      <option value="">Categorías</option>
+      <option value="laptops.html">Laptops</option>
+      <option value="desktops.html">Desktops</option>
+      <option value="accesorios.html">Accesorios</option>
+    
+    <input type="text" id="searchInput" placeholder="Buscar marca" class="search-input">
+    <button class="btn search-btn" onclick="searchProducts()">Buscar</button>
+  </div>
+
+  <div class="cart">
+    <div style="display: flex; align-items: center;">
+      <a href="iniciar sesion.html" class="btn btn-login">Iniciar Sesión</a>
+      <span class="separator">|</span>
+      <a href="registro.html" class="btn btn-register">Registrarse</a>
+      <button class="btn cart-btn" onclick="toggleCartDetails()">
+        <img src="Imagenes/carrito.png" alt="Carrito"> <!-- Imagen del carrito -->
+        <div class="cart-count" id="cartCount">0</div> <!-- Aquí se muestra el número de artículos -->
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Menú de navegación superior con desgloses -->
+<nav class="top-menu">
+  <div class="left-links">
+    <a href="marcas.html">MARCAS BUSCADAS &#9662;</a>
+    <a href="servicio tecnico.html">SERVICIO TÉCNICO PERSONALIZADO</a>
+  </div>
+
+  <div class="right-links">
+    <a href="Sobre nosotros.html">SOBRE NOSOTROS</a>
+    <a href="index.html" class="inicio-link">
+      <img src="Imagenes/casa.png" alt="Inicio"> <!-- Imagen al lado de INICIO -->INICIO
+    </a>
+  </div>
+</nav>
+
+<!-- Marquee adicional para promoción -->
+<marquee behavior="scroll" direction="left">
+  ¡Descubre la tecnología que necesitas al mejor precio!
+</marquee>
+
+<div class="whatsapp-btn">
+  <img src="Imagenes/whatsapp.png" alt="WhatsApp"> <!-- Imagen del botón de WhatsApp -->
+  ATENCIÓN POR WHATSAPP
+</div>
+
+<!-- Desglose del carrito -->
+<div id="cartDetails">
+  <h3>Productos en el carrito</h3>
+  <ul id="cartList">
+    <!-- Aquí se agregarán los productos -->
+  </ul>
+  <button onclick="clearCart()">Vaciar Carrito</button>
+</div>
+
+<script>
+  var cartItems = []; // Array para almacenar los productos del carrito
+
+  function toggleCartDetails() {
+    var cartDetails = document.getElementById("cartDetails");
+    cartDetails.style.display = cartDetails.style.display === "none" || cartDetails.style.display === "" ? "block" : "none";
+    
+    // Mostrar el desglose de los productos
+    updateCart();
+  }
+
+  function updateCart() {
+    var cartList = document.getElementById("cartList");
+    var cartCount = document.getElementById("cartCount");
+    cartList.innerHTML = ""; // Limpiar la lista antes de agregar productos
+    
+    if (cartItems.length === 0) {
+      cartList.innerHTML = "<li>El carrito está vacío</li>";
+      cartCount.textContent = "0"; // Si el carrito está vacío, mostrar 0
+    } else {
+      cartItems.forEach(function(item) {
+        var li = document.createElement("li");
+        li.textContent = item;
+        cartList.appendChild(li);
+      });
+      cartCount.textContent = cartItems.length; // Mostrar el número de productos en el carrito
+    }
+  }
+
+  // Simulación de agregar productos al carrito
+  function addProductToCart(productName) {
+    cartItems.push(productName);
+    updateCart();
+  }
+
+  // Función para vaciar el carrito
+  function clearCart() {
+    cartItems = [];
+    updateCart();
+  }
+
+  // Para pruebas, agrega productos automáticamente
+  addProductToCart("Laptop Dell XPS 13");
+  addProductToCart("Mouse Logitech");
+</script>
+
+<!-- Página de Desktops -->
+<header>
+  <h1>Desktops - Marcas Populares</h1>
+</header>
+
+<main>
+  <div class="product-grid">
+    <div class="product-card" onmouseover="changeImage(this)" onmouseout="resetImage(this)">
+      <img src="Imagenes/acer-predator.jpg" alt="Acer Predator" class="product-image">
+      <h2>Acer Predator Orion 3000</h2>
+      <p>Intel Core i7 / 16GB RAM / 1TB HDD + 256GB SSD / Windows 10 PRO</p>
+      <p class="stock">Stock: 3 Artículos</p>
+      <p class="brand">Marca: Acer</p>
+      <p class="price">$1,200.00 (S/ 4,440.00)</p>
+      <button class="add-to-cart" onclick="addProductToCart('Acer Predator Orion 3000')">Agregar al carrito</button>
+    </div>
+
+    <div class="product-card" onmouseover="changeImage(this)" onmouseout="resetImage(this)">
+      <img src="Imagenes/asus-rog.jpg" alt="Asus ROG" class="product-image">
+      <h2>Asus ROG Strix G10DK</h2>
+      <p>AMD Ryzen 7 / 16GB RAM / 1TB HDD + 512GB SSD / Windows 10 PRO</p>
+      <p class="stock">Stock: 2 Artículos</p>
+      <p class="brand">Marca: Asus</p>
+      <p class="price">$1,500.00 (S/ 5,550.00)</p>
+      <button class="add-to-cart" onclick="addProductToCart('Asus ROG Strix G10DK')">Agregar al carrito</button>
+    </div>
+
+    <div class="product-card" onmouseover="changeImage(this)" onmouseout="resetImage(this)">
+      <img src="Imagenes/dell-gaming.jpg" alt="Dell Gaming" class="product-image">
+      <h2>Dell G5 Gaming Desktop</h2>
+      <p>Intel Core i5 / 8GB RAM / 512GB SSD / Windows 11 PRO</p>
+      <p class="stock">Stock: 1 Artículo</p>
+      <p class="brand">Marca: Dell</p>
+      <p class="price">$950.00 (S/ 3,515.00)</p>
+      <button class="add-to-cart" onclick="addProductToCart('Dell G5 Gaming Desktop')">Agregar al carrito</button>
+    </div>
+
+    <div class="product-card" onmouseover="changeImage(this)" onmouseout="resetImage(this)">
+      <img src="Imagenes/hp-omen.jpg" alt="HP Omen" class="product-image">
+      <h2>HP Omen 25L</h2>
+      <p>Intel Core i7 / 16GB RAM / 1TB HDD + 512GB SSD / Windows 10 PRO</p>
+      <p class="stock">Stock: 2 Artículos</p>
+      <p class="brand">Marca: HP</p>
+      <p class="price">$1,800.00 (S/ 6,600.00)</p>
+      <button class="add-to-cart" onclick="addProductToCart('HP Omen 25L')">Agregar al carrito</button>
+    </div>
+
+    <div class="product-card" onmouseover="changeImage(this)" onmouseout="resetImage(this)">
+        <img src="Imagenes/VICTUS.jpg" alt="HP victus" class="product-image">
+        <h2>HP Victus Gaming TG02-1001la</h2>
+        <p>Intel Core i5 / 8GB RAM / 512GB SSD NVMe™ M.2/ Windows 11  </p>
+        <p class="stock">Stock: 3 Artículos</p>
+        <p class="brand">Marca: HP</p>
+        <p class="price">$1,129.03 (S/ 4,299.00)</p>
+        <button class="add-to-cart" onclick="addProductToCart('HP Victus Gaming TG02')">Agregar al carrito</button>
+      </div>
+
+      <div class="product-card" onmouseover="changeImage(this)" onmouseout="resetImage(this)">
+        <img src="Imagenes/LEGION TOWER.jpg" alt="legion Tower" class="product-image">
+        <h2>Legion Tower 5i</h2>
+        <p>Intel Core i9 / 16GB RAM / 1TB HDD + 1TB SSD / Windows 10 HOME</p>
+        <p class="stock">Stock: 2 Artículos</p>
+        <p class="brand">Marca: Lenovo</p>
+        <p class="price">$1,102.55 (S/ 4,198.17)</p>
+        <button class="add-to-cart" onclick="addProductToCart('Legion Tower 5i')">Agregar al carrito</button>
+      </div>
+
+      <div class="product-card" onmouseover="changeImage(this)" onmouseout="resetImage(this)">
+        <img src="Imagenes/ROG G16.jpg" alt="ROG G16CH" class="product-image">
+        <h2>ROG G16CH (2024)</h2>
+        <p>Intel Core i7 / 32GB RAM / 1TB SSD / Windows 11 PRO</p>
+        <p class="stock">Stock: 2 Artículos</p>
+        <p class="brand">Marca: ASUS</p>
+        <p class="price">$1,493.22 (S/ 5,685.72)</p>
+        <button class="add-to-cart" onclick="addProductToCart('ROG G16CH (2024)')">Agregar al carrito</button>
+      </div>
+
+      <div class="product-card" onmouseover="changeImage(this)" onmouseout="resetImage(this)">
+        <img src="Imagenes/MSI AEGIS.jpg" alt="MSI Aegis" class="product-image">
+        <h2>MSI Aegis ZS</h2>
+        <p>AMD Ryzen 7 7700 / 16GB RAM / 1TB SSD / GeForce RTX 4060 / Windows 11 </p>
+        <p class="stock">Stock: 3 Artículos</p>
+        <p class="brand">Marca: MSI</p>
+        <p class="price">$976.64 (S/ 3,718.74)</p>
+        <button class="add-to-cart" onclick="addProductToCart('MSI Aegis ZS')">Agregar al carrito</button>
+      </div>
+    
+      <div class="product-card" onmouseover="changeImage(this)" onmouseout="resetImage(this)">
+        <img src="Imagenes/PREDATOR ORION.jpg" alt="Predator Orion 7000 PO7" class="product-image">
+        <h2>Predator Orion 7000 PO7L</h2>
+        <p>Intel Core i7 / 32GB RAM / 2TB HDD + 1TB SSD / Windows 11 PRO</p>
+        <p class="stock">Stock: 2 Artículos</p>
+        <p class="brand">Marca: HP</p>
+        <p class="price">$1,999.00 (S/ 7,611.57)</p>
+        <button class="add-to-cart" onclick="addProductToCart('Predator Orion 7000 ')">Agregar al carrito</button>
+      </div>
+
+      <div class="product-card" onmouseover="changeImage(this)" onmouseout="resetImage(this)">
+        <img src="Imagenes/ALIEN.jpg" alt="Aurora R16" class="product-image">
+        <h2>Alienware Aurora R16</h2>
+        <p>Intel Core i9 / 16GB RAM / 4TB HDD + 10TB SSD / Windows 11 PRO</p>
+        <p class="stock">Stock: 1 Artículos</p>
+        <p class="brand">Marca:Alienware </p>
+        <p class="price">$3,329.00 (S/ 12,675.80)</p>
+        <button class="add-to-cart" onclick="addProductToCart('Alienware Aurora R16')">Agregar al carrito</button>
+      </div>
+
+      <div class="product-card" onmouseover="changeImage(this)" onmouseout="resetImage(this)">
+        <img src="Imagenes/HP OMEN45L.jpg" alt="HP Omen" class="product-image">
+        <h2>HP OMEN 45L</h2>
+        <p>Intel Core i7 / 16GB RAM / 1TB SSD / GeForce RTX 4070 Ti/ Windows 11 </p>
+        <p class="stock">Stock: 1 Artículos</p>
+        <p class="brand">Marca: HP</p>
+        <p class="price">$1,800.00 (S/ 12,675.80)</p>
+        <button class="add-to-cart" onclick="addProductToCart('HP Omen 45L')">Agregar al carrito</button>
+      </div>
+
+      <div class="product-card" onmouseover="changeImage(this)" onmouseout="resetImage(this)">
+        <img src="Imagenes/ASUS ROG STIX I7.jpg" alt="ASUS ROG" class="product-image">
+        <h2>ASUS ROG Strix i7</h2>
+        <p>Intel Core i7 / 32GB RAM / 1TB SSD / GeForce RTX 4060/ Windows 11 </p>
+        <p class="stock">Stock: 2 Artículos</p>
+        <p class="brand">Marca: ASUS</p>
+        <p class="price">$1,289.00 (S/ 4,908.11)</p>
+        <button class="add-to-cart" onclick="addProductToCart('ROG Strix i7')">Agregar al carrito</button>
+      </div>
+
+  </div>
+</main>
+
+<script src="scriptdesktops.js"></script> <!-- Enlace al archivo JavaScript de la sección de desktops -->
+
+</body>
+</html>

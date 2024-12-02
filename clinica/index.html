@@ -1,0 +1,217 @@
+<?php
+session_start();
+
+// Verificar si el usuario está autenticado y tiene el rol de admin
+$isAdmin = isset($_SESSION['role']) && $_SESSION['role'] == 'admin';
+?>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Clínica del Informático</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Aquí puedes añadir estilos adicionales para el botón CP Panel */
+    .cp-panel-btn {
+      color: red;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+    <!-- Información de contacto y enlaces rápidos -->
+    <a href="#">Atención al Cliente: 971 708 349 &gt;&gt; Términos y Condiciones Delibery &gt;&gt; Garantía</a>
+    <span style="float:right;">Correo: laclinicadelinformatico@gmail.com</span>
+</header>
+
+<nav class="navbar">
+    <a href="index.html">
+        <img src="Imagenes/laclinica.png" alt="La Clínica del Informático"> <!-- Imagen del logo -->
+    </a>
+
+
+
+
+    <div class="cart">
+        <div style="display: flex; align-items: center;">
+            <a href="iniciar sesion.html" class="btn btn-login">Iniciar Sesión</a>
+            <span class="separator">|</span>
+            <a href="registro.html" class="btn btn-register">Registrarse</a>
+            <?php
+            // Obtener la cantidad de productos en el carrito de la sesión
+            session_start();
+            $cart_count = isset($_SESSION['carrito']) ? count($_SESSION['carrito']) : 0;
+            ?>
+            <div class="cart">
+                <a href="ver_carrito.php" class="btn cart-btn" target="_blank"> 
+                    <img src="Imagenes/carrito.png" alt="Carrito">
+                    <div class="cart-count" id="cartCount"><?php echo $cart_count; ?></div>
+                </a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Menú de navegación superior con desgloses -->
+<nav class="top-menu">
+    <div class="left-links">
+        <a href="marcas.html">MARCAS BUSCADAS &#9662;</a>
+        <a href="servicio tecnico.html">SERVICIO TÉCNICO PERSONALIZADO</a>
+        <a href="resultado_producto.php">BUSCADOR DE PRODUCTOS</a>
+    </div>
+
+    <div class="right-links">
+        <a href="Sobre nosotros.html">SOBRE NOSOTROS</a>
+        <a href="index.html" class="inicio-link">
+            <img src="Imagenes/casa.png" alt="Inicio"> <!-- Imagen al lado de INICIO -->INICIO
+        </a>
+
+    
+    </div>
+</nav>
+
+<!-- Marquee adicional para promoción -->
+<marquee behavior="scroll" direction="left">
+    ¡Descubre la tecnología que necesitas al mejor precio!
+</marquee>
+
+<!-- Carrusel de imágenes -->
+<div class="image-slider">
+    <div class="slides">
+        <img src="Imagenes/principal1.png" alt="Imagen 1" class="slide">
+        <img src="Imagenes/principal2.png" alt="Imagen 2" class="slide">
+        <img src="Imagenes/principal3.png" alt="Imagen 3" class="slide">
+        <img src="Imagenes/principal4.png" alt="Imagen 4" class="slide">
+        <img src="Imagenes/principal5.png" alt="Imagen 5" class="slide">
+        <img src="Imagenes/principal6.png" alt="Imagen 6" class="slide">
+    </div>
+    <!-- Controles para navegar entre imágenes -->
+    <button class="prev" onclick="prevSlide()">&#10094;</button>
+    <button class="next" onclick="nextSlide()">&#10095;</button>
+    <!-- Indicadores -->
+    <div class="indicators">
+        <span class="dot" onclick="currentSlide(0)"></span>
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+    </div>
+</div>
+
+
+<div class="brand-logos">
+    <a href="https://www.acer.com" target="_blank">
+        <img src="Imagenes/acer.png" alt="Logo Acer" class="brand-logo" data-id="6">
+    </a>
+    <a href="https://www.asus.com" target="_blank">
+        <img src="Imagenes/asus.png" alt="Logo Asus" class="brand-logo" data-id="2">
+    </a>
+    <a href="https://www.canon.com" target="_blank">
+        <img src="Imagenes/canon.png" alt="Logo Canon" class="brand-logo" data-id="5">
+    </a>
+    <a href="https://www.epson.com" target="_blank">
+        <img src="Imagenes/epson.png" alt="Logo Epson" class="brand-logo" data-id="4">
+    </a>
+</div>
+
+
+<!-- Botón de atención por WhatsApp -->
+<div class="whatsapp-btn">
+    <a href="https://wa.me/51974707700" target="_blank" id="whatsapp-button" class="whatsapp-button">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6b/WhatsApp.svg/1200px-WhatsApp.svg.png" alt="WhatsApp" />
+        <span>Atención por WhatsApp</span> <!-- Agregar el texto al lado del ícono -->
+    </a>
+</div>
+
+<script>
+    // Función para mostrar la búsqueda de productos
+    function searchProducts() {
+        var categoryDropdown = document.getElementById("categoryDropdown");
+        var selectedCategory = categoryDropdown.value;
+        var searchInput = document.getElementById("searchInput").value.trim().toLowerCase();
+
+        if (selectedCategory) {
+            window.location.href = selectedCategory; // Redirige a la página de la categoría seleccionada
+        } else if (searchInput) {
+            switch (searchInput) {
+                case "acer":
+                    window.location.href = "pagina_acer.html"; // Redirige a la página de Acer
+                    break;
+                case "asus":
+                    window.location.href = "pagina_asus.html"; // Redirige a la página de Asus
+                    break;
+                case "benq":
+                    window.location.href = "pagina_benq.html"; // Redirige a la página de Benq
+                    break;
+                case "canon":
+                    window.location.href = "pagina_canon.html"; // Redirige a la página de Canon
+                    break;
+                case "corsair":
+                    window.location.href = "pagina_corsair.html"; // Redirige a la página de Corsair
+                    break;
+                case "dell":
+                    window.location.href = "pagina_dell.html"; // Redirige a la página de Dell
+                    break;
+                case "epson":
+                    window.location.href = "pagina_epson.html"; // Redirige a la página de Epson
+                    break;
+                default:
+                    alert("Marca no encontrada. Por favor, verifica el nombre."); // Mensaje si la marca no está en la lista
+            }
+        } else {
+            alert("Por favor, selecciona una categoría o ingresa una marca para buscar."); // Mensaje si no se selecciona nada
+        }
+    }
+</script>
+<script>
+    // Lógica para el carrusel de imágenes
+    let currentIndex = 0;
+    const slides = document.querySelector('.slides');
+    const dots = document.querySelectorAll('.dot');
+
+    // Mostrar slide específico
+    function showSlide(index) {
+        const totalSlides = document.querySelectorAll('.slide').length;
+        if (index >= totalSlides) currentIndex = 0;
+        else if (index < 0) currentIndex = totalSlides - 1;
+        else currentIndex = index;
+
+        // Mover la pasarela
+        const offset = -currentIndex * 100; // Calcular desplazamiento
+        slides.style.transform = `translateX(${offset}%)`;
+
+        // Actualizar indicadores
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[currentIndex].classList.add('active');
+    }
+
+    // Navegar a la anterior
+    function prevSlide() {
+        showSlide(currentIndex - 1);
+    }
+
+    // Navegar a la siguiente
+    function nextSlide() {
+        showSlide(currentIndex + 1);
+    }
+
+    // Navegar a un slide específico desde indicadores
+    function currentSlide(index) {
+        showSlide(index);
+    }
+
+    // Auto-play cada 3 segundos
+    setInterval(() => {
+        nextSlide();
+    }, 3000);
+
+    // Inicia en el primer slide
+    showSlide(0);
+</script>
+
+
+</body>
+</html>

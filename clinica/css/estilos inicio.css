@@ -1,0 +1,159 @@
+/* Estilos básicos para la página */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+}
+
+header {
+    background-color: #ddd;
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+}
+
+header a {
+    color: #5b5672;
+    text-decoration: none;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ccc;
+    padding: 10px 20px;
+}
+
+.navbar img {
+    height: 15px;
+}
+
+.navbar .search-bar {
+    display: flex;
+    flex-grow: 1;
+    margin-left: 20px;
+}
+
+.navbar input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #999;
+    border-radius: 5px;
+}
+
+.navbar button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.navbar .cart {
+    margin-left: 50px;
+}
+
+.main-banner {
+    position: relative;
+    width: 100vw; /* Ancho de la ventana */
+    height: 55vh; /* Altura de la ventana */
+}
+
+.main-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Asegura que la imagen cubra toda la pantalla sin deformarse */
+}
+
+.brand-logos {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+    background-color: white;
+    padding: 10px;
+}
+
+.brand-logos img {
+    height: 80px;
+}
+
+.whatsapp-btn {
+    background-color: #25d366;
+    color: white;
+    border: none;
+    padding: 10px;
+    text-align: center;
+    font-size: 16px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.whatsapp-btn img {
+    height: 40px;
+    margin-right: 10px;
+    display: inline-block; /* Asegura que la imagen se alinee bien con el texto */
+}
+
+/* Estilos para el menú superior */
+nav.top-menu {
+    background-color: #aaa;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav.top-menu .left-links,
+nav.top-menu .right-links {
+    display: flex;
+    align-items: center;
+}
+
+nav.top-menu button,
+nav.top-menu a {
+    background: none;
+    border: none;
+    font-size: 14px;
+    margin-right: 20px;
+    cursor: pointer;
+    color: black;
+    text-decoration: none;
+}
+
+nav.top-menu ul {
+    list-style-type: none;
+    display: none;
+    position: absolute;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+}
+
+nav.top-menu ul li {
+    padding: 5px;
+    text-align: left;
+}
+
+nav.top-menu ul li a {
+    color: rgb(76, 231, 128);
+    text-decoration: none;
+}
+
+nav.top-menu ul li a:hover {
+    text-decoration: underline;
+}
+
+/* Estilo para la imagen en el enlace de inicio */
+nav.top-menu .inicio-link img {
+    height: 20px; /* Ajusta la altura según sea necesario */
+    vertical-align: middle;
+    margin-left: 5px; /* Espacio entre la imagen y el texto */
+}

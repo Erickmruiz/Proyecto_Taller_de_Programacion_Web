@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Clínica del Informático</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/ESTILO(REG.).css">
+</head>
+<body>
+
+  <!-- Encabezado -->
+  <header>
+    <div>
+      <a href="#">Atención al Cliente: 971 708 349 &gt;&gt; Términos y Condiciones Delibery &gt;&gt; Garantía</a>
+      <span style="float:right;">Correo: laclinicadelinformatico@gmail.com</span>
+    </div>
+  </header>
+
+  <nav class="navbar">
+    <a href="index.html">
+        <img src="Imagenes/laclinica.png" alt="La Clínica del Informático"> <!-- Imagen del logo -->
+    </a>
+    
+    
+
+    <div class="cart">
+      <div style="display: flex; align-items: center;">
+        <a href="iniciar sesion.html" class="btn btn-login">Iniciar Sesión</a>
+        <span class="separator">|</span>
+        <a href="registro.html" class="btn btn-register">Registrarse</a>
+        <button class="btn cart-btn" onclick="toggleCartDetails()">
+          <img src="Imagenes/carrito.png" alt="Carrito"> <!-- Imagen del carrito -->
+          <div class="cart-count" id="cartCount">0</div> <!-- Aquí se muestra el número de artículos -->
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Menú superior -->
+  <nav class="top-menu">
+    <div class="left-links">
+      <a href="marcas.html">MARCAS BUSCADAS &#9662;</a>
+      <a href="servicio tecnico.html">SERVICIO TÉCNICO PERSONALIZADO</a>
+      <a href="resultado_producto.php">BUSCADOR DE PRODUCTOS</a>
+    </div>
+
+    <div class="right-links">
+      <a href="Sobre nosotros.html">SOBRE NOSOTROS</a>
+      <a href="index.html" class="inicio-link">
+        <img src="Imagenes/casa.png" alt="Inicio"> <!-- Imagen al lado de INICIO -->INICIO
+      </a>
+    </div>
+  </nav>
+
+  <!-- Mensaje en scroll -->
+  <marquee behavior="scroll" direction="left">
+    ¡Descubre la tecnología que necesitas al mejor precio!
+  </marquee>
+
+  
+  <!-- Detalles del carrito -->
+  <div id="cartDetails">
+    <h3>Productos en el carrito</h3>
+    <ul id="cartList">
+      <!-- Aquí se agregarán los productos -->
+    </ul>
+    <button onclick="clearCart()">Vaciar Carrito</button>
+  </div>
+
+  <!-- Contenido principal -->
+  <main class="main">
+    <div class="form-container">
+      <h2 class="title">Crea tu cuenta</h2>
+  
+      <!-- Mensaje dinámico -->
+      <?php if (isset($_GET['mensaje'])): ?>
+        <div class="mensaje">
+          <?= htmlspecialchars($_GET['mensaje']) ?>
+        </div>
+      <?php endif; ?>
+  
+      <!-- Formulario de registro -->
+      <form class="form" action="registro.php" method="POST">
+        <div class="form-group">
+          <label for="name" class="label">Nombre completo</label>
+          <div class="input-wrapper">
+            <input id="name" type="text" name="nombre" placeholder="Tu nombre" required class="input">
+            <span class="icon icon-user"></span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email" class="label">Correo electrónico</label>
+          <div class="input-wrapper">
+            <input id="email" type="email" name="email" placeholder="tu@email.com" required class="input">
+            <span class="icon icon-mail"></span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password" class="label">Contraseña</label>
+          <div class="input-wrapper">
+            <input id="password" type="password" name="contrasena" placeholder="••••••••" required class="input">
+            <span class="icon icon-lock"></span>
+            <button type="button" class="btn btn-icon">
+              <span class="icon icon-eye"></span>
+            </button>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="confirm-password" class="label">Confirmar contraseña</label>
+          <div class="input-wrapper">
+            <input id="confirm-password" type="password" placeholder="••••••••" required class="input">
+            <span class="icon icon-lock"></span>
+          </div>
+        </div>
+        <div class="form-group">
+          <input id="terms" type="checkbox" class="checkbox" required>
+          <label for="terms" class="checkbox-label">Acepto los <a href="/terms" class="link">términos y condiciones</a></label>
+        </div>
+        <button type="submit" class="btn-primary">Crear cuenta</button>
+      </form>
+  
+      <!-- Enlace para iniciar sesión -->
+      <p class="mt-4 text-center text-sm">
+        ¿Ya tienes una cuenta? <a href="INICIAR_SESION.html" class="link">Inicia sesión</a>
+      </p>
+    </div>
+  </main>
+
+  <!-- Pie de página -->
+  <footer class="footer">
+    <div class="container text-center">
+      <p class="text-sm">© 2024 La Clínica del Informático. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    var cartItems = [];
+
+    function toggleCartDetails() {
+      var cartDetails = document.getElementById("cartDetails");
+      cartDetails.style.display = cartDetails.style.display === "none" || cartDetails.style.display === "" ? "block" : "none";
+      updateCart();
+    }
+
+    function updateCart() {
+      var cartList = document.getElementById("cartList");
+      var cartCount = document.getElementById("cartCount");
+      cartList.innerHTML = "";
+      if (cartItems.length === 0) {
+        cartList.innerHTML = "<li>El carrito está vacío</li>";
+        cartCount.textContent = "0";
+      } else {
+        cartItems.forEach(function(item) {
+          var li = document.createElement("li");
+          li.textContent = item;
+          cartList.appendChild(li);
+        });
+        cartCount.textContent = cartItems.length;
+      }
+    }
+
+    function addProductToCart(productName) {
+      cartItems.push(productName);
+      updateCart();
+    }
+
+    function clearCart() {
+      cartItems = [];
+      updateCart();
+    }
+
+    addProductToCart("Laptop Dell XPS 13");
+    addProductToCart("Mouse Logitech");
+  </script>
+  <script>
+    // Verifica si hay un mensaje de éxito o error en la URL
+    const params = new URLSearchParams(window.location.search);
+    const status = params.get('status');
+
+    if (status === 'success') {
+      alert("¡Registro exitoso!");
+    } else if (status === 'error') {
+      alert("Hubo un error. Por favor, intenta nuevamente.");
+    }
+  </script>
+
+</body>
+</html>

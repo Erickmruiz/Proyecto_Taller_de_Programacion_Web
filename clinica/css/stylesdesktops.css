@@ -1,0 +1,108 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%; /* Aseguramos que el cuerpo ocupe toda la altura de la pantalla */
+    width: 100%; /* Aseguramos que el cuerpo ocupe toda la anchura de la pantalla */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 0; /* Elimina el padding por defecto */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Alinea el contenido hacia arriba */
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #333;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Ajusta las columnas automáticamente */
+    gap: 20px; /* Espacio entre los elementos */
+    padding: 20px; /* Asegura que haya suficiente espacio */
+    flex-grow: 1; /* Hace que la cuadrícula ocupe el espacio restante disponible */
+    overflow-y: auto; /* Permite que la cuadrícula sea desplazable si hay más productos de los que caben en la pantalla */
+}
+
+.product-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Añadir efecto en sombra */
+}
+
+.product-card:hover {
+    transform: scale(1.05); /* Aumenta el tamaño al pasar el cursor */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Mejora la sombra al pasar el cursor */
+}
+
+.product-image {
+    width: 100%; /* Ocupa todo el ancho del contenedor */
+    height: 200px; /* Altura fija para las imágenes */
+    object-fit: cover; /* Ajusta la imagen para llenar el contenedor respetando su proporción */
+    margin-bottom: 15px;
+    border-radius: 5px; /* Bordes redondeados para las imágenes */
+}
+
+h2 {
+    font-size: 1.5em;
+    margin: 10px 0;
+    color: #333;
+}
+
+p {
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-size: 1.2em;
+    color: #e63946;
+    font-weight: bold;
+}
+
+.stock, .brand {
+    font-size: 0.9em;
+    color: #777;
+}
+
+/* Estilos para hacer que la cuadrícula sea responsiva */
+@media (max-width: 600px) {
+    .product-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Ajuste para pantallas pequeñas */
+    }
+}
+/* Estilo para el botón "Agregar al carrito" */
+.add-to-cart {
+    margin-top: auto; /* Esto hace que el botón se quede siempre en la parte inferior */
+    padding: 10px 20px;
+    font-size: 1em;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.add-to-cart:hover {
+    background-color: #0056b3; /* Cambia a un azul más oscuro al pasar el mouse */
+    transform: scale(1.1); /* Aumenta el tamaño ligeramente */
+}

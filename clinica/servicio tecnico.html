@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Clínica del Informático</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/servicios-tecnicos.css">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Estilos adicionales si son necesarios */
+  </style>
+</head>
+<body>
+
+<!-- Encabezado y barra de navegación principal -->
+<header>
+  <a href="#">Atención al Cliente: 971 708 349 &gt;&gt; Términos y Condiciones Delibery &gt;&gt; Garantía</a>
+  <span style="float:right;">Correo: laclinicadelinformatico@gmail.com</span>
+</header>
+
+<nav class="navbar">
+  <a href="index.html">
+      <img src="Imagenes/laclinica.png" alt="La Clínica del Informático"> <!-- Imagen del logo -->
+  </a>
+  <div class="cart">
+    <div style="display: flex; align-items: center;">
+      <a href="iniciar sesion.html" class="btn btn-login">Iniciar Sesión</a>
+      <span class="separator">|</span>
+      <a href="registro.html" class="btn btn-register">Registrarse</a>
+      <?php
+            session_start();
+            $cart_count = isset($_SESSION['carrito']) ? count($_SESSION['carrito']) : 0;
+            ?>
+            <div class="cart">
+                <a href="ver_carrito.php" class="btn cart-btn" target="_blank"> 
+                    <img src="Imagenes/carrito.png" alt="Carrito">
+                    <div class="cart-count" id="cartCount"><?php echo $cart_count; ?></div>
+                </a>
+            </div>
+    </div>
+  </div>
+</nav>
+
+<!-- Menú adicional -->
+<nav class="top-menu">
+  <div class="left-links">
+    <a href="marcas.html">MARCAS BUSCADAS &#9662;</a>
+    <a href="servicio tecnico.html">SERVICIO TÉCNICO PERSONALIZADO</a>
+    <a href="resultado_producto.php">BUSCADOR DE PRODUCTOS</a>
+  </div>
+  <div class="right-links">
+    <a href="Sobre nosotros.html">SOBRE NOSOTROS</a>
+    <a href="index.html" class="inicio-link">
+      <img src="Imagenes/casa.png" alt="Inicio"> INICIO
+    </a>
+  </div>
+</nav>
+
+<marquee behavior="scroll" direction="left">
+  ¡Descubre la tecnología que necesitas al mejor precio!
+</marquee>
+
+<!-- Contenido principal -->
+<main>
+  <!-- Sección de servicios -->
+  <div class="container">
+    <header class="header">
+      <h1>Servicio Técnico Personalizado</h1>
+      
+      </nav>
+    </header>
+
+    <section class="service-section">
+      <h2>Reparación y Mantenimiento</h2>
+      <ul>
+        <li>Reparación de Laptops</li>
+        <li>Reparación de PCs</li>
+        <li>Reparación de Impresoras</li>
+        <li>Instalación de Cámaras de Seguridad</li>
+      </ul>
+    </section>
+
+    <section class="slideshow-section">
+      <h2>Galería de Servicios</h2>
+      <div class="slideshow-container">
+        <div class="slide fade">
+          <img src="Imagenes/laptop-repair.jpg" alt="Reparación de Laptop" class="slide-img">
+        </div>
+        <div class="slide fade">
+          <img src="Imagenes/pc-repair.jpeg" alt="Reparación de PC" class="slide-img">
+        </div>
+        <div class="slide fade">
+          <img src="Imagenes/printer-repair.jpeg" alt="Reparación de Impresora" class="slide-img">
+        </div>
+        <div class="slide fade">
+          <img src="Imagenes/camera-installation.jpeg" alt="Instalación de Cámaras de Seguridad" class="slide-img">
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Sección del carrito -->
+  <div id="cartDetails">
+    <h3>Productos en el carrito</h3>
+    <ul id="cartList">
+      <!-- Aquí se agregarán los productos -->
+    </ul>
+    <button onclick="clearCart()">Vaciar Carrito</button>
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>&copy; 2024 La Clínica del Informático - Todos los derechos reservados.</p>
+</footer>
+
+<script src="servicios-tecnicos.js"></script>
+<script>
+  var cartItems = []; 
+
+  function toggleCartDetails() {
+    var cartDetails = document.getElementById("cartDetails");
+    cartDetails.style.display = cartDetails.style.display === "none" || cartDetails.style.display === "" ? "block" : "none";
+    updateCart();
+  }
+
+  function updateCart() {
+    var cartList = document.getElementById("cartList");
+    var cartCount = document.getElementById("cartCount");
+    cartList.innerHTML = "";
+    if (cartItems.length === 0) {
+      cartList.innerHTML = "<li>El carrito está vacío</li>";
+      cartCount.textContent = "0";
+    } else {
+      cartItems.forEach(function(item) {
+        var li = document.createElement("li");
+        li.textContent = item;
+        cartList.appendChild(li);
+      });
+      cartCount.textContent = cartItems.length;
+    }
+  }
+
+  function addProductToCart(productName) {
+    cartItems.push(productName);
+    updateCart();
+  }
+
+  function clearCart() {
+    cartItems = [];
+    updateCart();
+  }
+
+  addProductToCart("Laptop Dell XPS 13");
+  addProductToCart("Mouse Logitech");
+</script>
+
+</body>
+</html>

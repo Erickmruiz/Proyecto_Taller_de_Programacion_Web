@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>La Clínica del Informático</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/estilos iniciar.css">
+  <style>
+    /* Sección para estilos adicionales si se necesita */
+  </style>
+</head>
+<body>
+
+<!-- Sección del encabezado compartida -->
+<header>
+  <a href="#">Atención al Cliente: 971 708 349 &gt;&gt; Términos y Condiciones Delibery &gt;&gt; Garantía</a>
+  <span style="float:right;">Correo: laclinicadelinformatico@gmail.com</span>
+  <!-- Sección para mostrar el usuario logueado -->
+  <span id="userLoggedIn" style="float: right; margin-right: 10px;"></span>
+</header>
+
+<!-- Barra de navegación principal -->
+<nav class="navbar">
+  <a href="index.html">
+      <img src="Imagenes/laclinica.png" alt="La Clínica del Informático"> <!-- Imagen del logo -->
+  </a>
+    
+    
+    <!-- Sección para botones de inicio de sesión, registro y carrito -->
+    <div class="cart">
+        <div style="display: flex; align-items: center;">
+            <a href="iniciar sesion.html" class="btn btn-login">Iniciar Sesión</a>
+            <span class="separator">|</span>
+            <a href="registro.html" class="btn btn-register">Registrarse</a>
+            <button class="btn cart-btn" onclick="toggleCartDetails()">
+                <img src="Imagenes/carrito.png" alt="Carrito"> <!-- Imagen del carrito -->
+                <div class="cart-count" id="cartCount">0</div> <!-- Aquí se muestra el número de artículos -->
+            </button>
+        </div>
+    </div>
+</nav>
+
+<!-- Segunda navegación -->
+<nav class="top-menu">
+    <div class="left-links">
+        <a href="marcas.html">MARCAS BUSCADAS &#9662;</a>
+        <a href="servicio tecnico.html">SERVICIO TÉCNICO PERSONALIZADO</a>
+        <a href="resultado_producto.php">BUSCADOR DE PRODUCTOS</a>
+    </div>
+
+    <div class="right-links">
+        <a href="Sobre nosotros.html">SOBRE NOSOTROS</a>
+        <a href="index.html" class="inicio-link">
+            <img src="Imagenes/casa.png" alt="Inicio"> <!-- Imagen al lado de INICIO -->INICIO
+        </a>
+    </div>
+</nav>
+
+<!-- Sección promocional -->
+<marquee behavior="scroll" direction="left">
+    ¡Descubre la tecnología que necesitas al mejor precio!
+</marquee>
+
+
+
+<!-- Desglose del carrito -->
+<div id="cartDetails">
+    <h3>Productos en el carrito</h3>
+    <ul id="cartList">
+        <!-- Aquí se agregarán los productos -->
+    </ul>
+    <button onclick="clearCart()">Vaciar Carrito</button>
+</div>
+
+<!-- Sección de inicio de sesión -->
+<main>
+  <div class="form-container">
+    <h2>Iniciar Sesión</h2>
+    <form>
+      <div class="form-group">
+        <label for="email">Correo electrónico</label>
+        <input type="email" id="email" placeholder="correo@ejemplo.com" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Contraseña</label>
+        <div class="password-container">
+          <input type="password" id="password" placeholder="••••••••" required>
+          <button type="button" class="btn-ghost" onclick="togglePassword()">
+            <svg id="eye-icon" class="icon" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path id="eye-path" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16.5 12a4.5 4.5 0 1 0-9 0 4.5 4.5 0 0 0 9 0z"></path>
+              <path id="eye-path-hidden" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.5 12a7.5 7.5 0 0 1 15 0 7.5 7.5 0 0 1-15 0z"></path>
+            </svg>
+            <span class="sr-only">Mostrar/ocultar contraseña</span>
+          </button>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="remember-me">
+          <input type="checkbox" class="form-checkbox">
+          Recordarme
+        </label>
+        <a href="/forgot-password" class="forgot-password">¿Olvidó su contraseña?</a>
+      </div>
+      <button type="submit" class="btn-primary">Iniciar Sesión</button>
+    </form>
+    <p class="register-link">
+      ¿No tienes una cuenta? <a href="registro.html" class="text-blue-600">Regístrate</a>
+    </p>
+  </div>
+</main>
+
+<footer>
+  <p>© 2024 La Clínica del Informático. Todos los derechos reservados.</p>
+</footer>
+
+<script>
+  function toggleCartDetails() {
+    var cartDetails = document.getElementById("cartDetails");
+    cartDetails.style.display = cartDetails.style.display === "none" || cartDetails.style.display === "" ? "block" : "none";
+    updateCart();
+  }
+
+  function updateCart() {
+    var cartList = document.getElementById("cartList");
+    var cartCount = document.getElementById("cartCount");
+    cartList.innerHTML = "";
+    if (cartItems.length === 0) {
+      cartList.innerHTML = "<li>El carrito está vacío</li>";
+      cartCount.textContent = "0";
+    } else {
+      cartItems.forEach(function (item) {
+        var li = document.createElement("li");
+        li.textContent = item;
+        cartList.appendChild(li);
+      });
+      cartCount.textContent = cartItems.length;
+    }
+  }
+
+  function clearCart() {
+    cartItems = [];
+    updateCart();
+  }
+
+  var cartItems = [];
+  addProductToCart("Laptop Dell XPS 13");
+  addProductToCart("Mouse Logitech");
+
+  function togglePassword() {
+    var passwordInput = document.getElementById('password');
+    var eyeIcon = document.getElementById('eye-icon');
+    var eyePath = document.getElementById('eye-path');
+    var eyePathHidden = document.getElementById('eye-path-hidden');
+    if (passwordInput.type === 'password') {
+      passwordInput.type = 'text';
+      eyePath.classList.add('hidden');
+      eyePathHidden.classList.remove('hidden');
+    } else {
+      passwordInput.type = 'password';
+      eyePath.classList.remove('hidden');
+      eyePathHidden.classList.add('hidden');
+    }
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,133 @@
+/* Resetting margins and setting default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header and navigation styling */
+.header {
+  background-color: #297ecd;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+.header h1 {
+  margin-bottom: 0.5rem;
+}
+
+.nav {
+  margin-top: 0.5rem;
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 1rem;
+}
+
+.nav a:hover {
+  text-decoration: underline;
+}
+
+/* Main content area with brand sections */
+.main-content {
+  flex-grow: 1;
+  padding: 2rem;
+  background-color: white;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Updated styles for brand logos */
+.brand-logos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.brand-logo {
+  width: 120px; /* Tamaño uniforme para el ancho */
+  height: 80px; /* Tamaño uniforme para la altura */
+  object-fit: contain; /* Evita la distorsión y mantiene la proporción */
+  margin: 15px 0; /* Espaciado entre cada logo */
+}
+
+/* Brand section styling */
+.brand-section {
+  margin-bottom: 2rem;
+}
+
+.brand-section h2 {
+  background-color: #297ecd;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  text-align: center;
+}
+
+/* Product list styling */
+.product-list {
+  list-style-type: none;
+  margin-top: 0.5rem;
+}
+
+.product-list li {
+  background-color: #f0f0f0;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  margin-top: 0.5rem;
+  border-radius: 0.25rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product-list img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  margin-bottom: 0.5rem;
+  border-radius: 0.25rem;
+}
+
+/* Footer styling */
+.footer {
+  background-color: #297ecd;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+
+  .product-list li {
+    padding: 0.5rem;
+  }
+
+  .product-list img {
+    width: 120px;
+    height: 120px;
+  }
+}

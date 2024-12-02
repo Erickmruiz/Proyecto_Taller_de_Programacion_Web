@@ -1,0 +1,187 @@
+/* Estilos generales */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f7fafc;
+  color: #333;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.min-h-screen {
+  min-height: 100vh;
+}
+
+.bg-gray-100 {
+  background-color: #f7fafc;
+}
+
+.bg-white {
+  background-color: #fff;
+}
+
+.shadow {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo */
+.logo {
+  width: 150px;
+  height: auto;
+}
+
+/* Estilo del botón/ancla "Inicio" */
+.btn {
+  display: inline;
+  color: #3496e6; /* Color azul */
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+.btn:hover {
+  color: #abc5de; /* Color más claro al pasar el cursor */
+}
+
+.btn:hover {
+  background-color: #2b6cb0; /* Cambio de color al hacer hover */
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.items-center {
+  align-items: center;
+}
+
+/* Título "Sobre Nosotros" centrado */
+.title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  color: #1a202c;
+}
+
+/* Secciones de Misión y Visión con fondo de círculos de colores */
+.mission-vision-section {
+  width: 45%;
+  padding: 2rem;
+  color: white;
+  text-align: center;
+  margin: 1rem;
+  border-radius: 1rem;
+}
+
+.bg-circles-mission {
+  background: radial-gradient(circle at top left, #ffcc00, #ff9900);
+}
+
+.bg-circles-vision {
+  background: radial-gradient(circle at bottom right, #00ccff, #0066ff);
+}
+
+/* Iconos dentro de círculos */
+.icon-circle {
+  width: 100px;
+  height: 100px;
+  background-color: white;
+  border-radius: 50%;
+  margin: 0 auto 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  width: 50px;
+  height: 50px;
+}
+
+/* Caja blanca translúcida debajo del texto de Misión y Visión */
+.text-box {
+  background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco con opacidad */
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  color: rgb(8, 0, 0); /* Texto en color oscuro */
+}
+
+/* Diferentes colores para los títulos Misión y Visión */
+.title-mission {
+  color: #49d608; /* Rojo oscuro para Misión */
+}
+
+.title-vision {
+  color: #ff0000; /* Verde azulado para Visión */
+}
+
+.text-lg {
+  font-size: 1.125rem;
+}
+
+.text-gray-600 {
+  color: #000306;
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+/* Estilo para el marquee */
+.marquee-container {
+  width: 100%;
+  overflow: hidden;
+  background-color: #e0e6e2; /* Color de fondo del marquee */
+  padding: 1rem 0;
+  color: rgb(16, 3, 3);
+  text-align: center;
+  position: relative;
+  margin-top: 0.5rem; /* Ajusta el margen superior para mover el marquee más arriba */
+}
+
+.marquee {
+  display: inline-block;
+  white-space: nowrap;
+  animation: marquee 10s linear infinite;
+}
+
+.marquee span {
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+/* Animación del marquee */
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+p {
+  font-family: Arial, sans-serif;
+  font-size: 1rem; /* Ajusta el tamaño de la fuente si es necesario */
+}
+
+strong {
+  font-weight: bold;
+}
+
+em {
+  font-style: italic;
+}

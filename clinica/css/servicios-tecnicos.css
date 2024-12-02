@@ -1,0 +1,112 @@
+/* General reset and body styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header and navigation styles */
+.header {
+  background-color: #297ecd;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+.header h1 {
+  margin-bottom: 0.5rem;
+}
+
+.nav {
+  margin-top: 0.5rem;
+}
+
+.nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 1rem;
+}
+
+.nav a:hover {
+  text-decoration: underline;
+}
+
+/* Main content area */
+.main-content {
+  flex-grow: 1;
+  padding: 2rem;
+}
+
+.service-section {
+  margin-bottom: 2rem;
+}
+
+.service-section h2 {
+  color: #297ecd;
+  margin-bottom: 1rem;
+}
+
+.service-section ul {
+  list-style-type: disc;
+  padding-left: 1.5rem;
+}
+
+.service-section ul li {
+  margin-bottom: 0.5rem;
+}
+
+/* Slideshow styling */
+.slideshow-section {
+  margin-bottom: 2rem;
+}
+
+.slideshow-container {
+  position: relative;
+  max-width: 80%; /* Ancho máximo del contenedor de la galería */
+  margin: auto; /* Centrar el contenedor */
+  overflow: hidden;
+}
+
+.slide {
+  display: none; /* Oculta las diapositivas por defecto */
+  text-align: center; /* Centrar las imágenes dentro del slide */
+}
+
+.slide-img {
+  width: 100%; /* Ajusta el tamaño de la imagen al contenedor */
+  max-width: 800px; /* Define un tamaño máximo para la imagen (ajústalo como desees) */
+  height: auto; /* Mantiene la proporción de la imagen */
+  border-radius: 0.25rem; /* Bordes redondeados */
+  margin: auto; /* Centra la imagen dentro del slide */
+}
+
+/* Footer styling */
+.footer {
+  background-color: #297ecd;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .main-content {
+    padding: 1rem;
+  }
+
+  .slide-img {
+    width: 100%; /* Para pantallas pequeñas, la imagen ocupará todo el ancho */
+    max-width: none; /* Elimina el tamaño máximo, ajustando a la pantalla */
+  }
+}
